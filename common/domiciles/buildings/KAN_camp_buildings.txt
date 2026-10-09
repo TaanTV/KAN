@@ -31,7 +31,7 @@ camp_main_01 = {
 	}
 	
 	# If you ever lose your main tent, for the love of god, get it back AQAP.
-	ai_value = { value = 10000 }
+	ai_value = { value = 10000000 } # add 10000
 
 	### ASIAN
 	asset = {
@@ -264,7 +264,7 @@ camp_main_03 = {
 		camp_unlocks_second_officer = yes
 	}
 	ai_value = {
-		value = camp_main_main_path_value
+		value = 100000 # add camp_main_main_path_value
 		if = {
 			limit = {
 				num_domicile_buildings >= 8
@@ -385,7 +385,7 @@ camp_main_04 = {
 		camp_unlocks_second_officer = yes
 	}
 	ai_value = {
-		value = camp_main_main_path_value
+		value = 100000 # add camp_main_main_path_value
 		if = {
 			limit = {
 				num_domicile_buildings >= 12
