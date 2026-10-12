@@ -1347,7 +1347,7 @@ laamp_base_contract_schemes.0034 = {
 			}
 			ordered_in_list = {
 				list = destination_counties_list
-				order_by = "squared_distance(prev.capital_province)"
+				order_by = "squared_distance(scope:employer.capital_province)" #Unop
 				max = 3
 				check_range_bounds = no
 				if = {
@@ -2328,6 +2328,9 @@ scripted_trigger laamp_base_contract_schemes_0321_valid_impressionable_courtier_
 
 scripted_effect laamp_base_contract_schemes_0321_transfer_chosen_courtier_effect = {
 	add_courtier = $COURTIER_CHOSEN$
+	$COURTIER_CHOSEN$ = { #Unop: The chosen character can be a guest, and add_courtier alone does not end an ongoing court visit, so they would stay at the original court instead of travelling with us
+		hidden_effect = { return_to_court = yes }
+	}
 	$REJECTED_1$ ?= {
 		add_opinion = {
 			target = root
@@ -4870,6 +4873,20 @@ scripted_effect laamp_base_contract_schemes_0661_setup_difficulties_effect = {
 			}
 		}
 		save_scope_as = task_contract
+	}
+	if = {
+		limit = {
+			#debug_only = yes
+			NOT = { exists = scope:duel_diff }
+		}
+		error_log_stack_trace = "Unop: For laamp_base_contract_schemes_0661_setup_difficulties_effect diagnostic" #Check error.log
+		error_log = "Unop: For laamp_base_contract_schemes_0661_setup_difficulties_effect diagnostic, no scope value duel_diff defined, fallback on a laamp_base_contract_schemes_on_going_duel_diff_t1_value"
+		debug_log = "Unop: For laamp_base_contract_schemes_0661_setup_difficulties_effect diagnostic, no scope value duel_diff defined, fallback on a laamp_base_contract_schemes_on_going_duel_diff_t1_value"
+		debug_log_scopes = yes
+		save_scope_value_as = {
+			name = duel_diff
+			value = @laamp_base_contract_schemes_on_going_duel_diff_t1_value
+		}
 	}
 }
 
@@ -9727,6 +9744,16 @@ laamp_base_contract_schemes.1044 = {
 					}
 				}
 			}
+		}
+
+		if = { #Unop: Sanity & debug warning check
+			limit = {
+				#debug_only = yes
+				NOT = { exists = scope:destination_2 }
+			}
+			error_log = "Unop: destination_2 is undefined"
+			debug_log = "Unop: destination_2 is undefined"
+			debug_log_scopes = yes
 		}
 		# Work out how many encounters we'll have.
 		scope:employer = {
@@ -24954,7 +24981,7 @@ laamp_base_contract_schemes.3781 = {
 		}
 
 		custom_tooltip = laamp_base_contract_schemes.3781.j.tt.flee_with_earnings
-		trigger_event = laamp_base_contract_schemes.3782
+		#trigger_event = laamp_base_contract_schemes.3782 #Unop Moved below, as 3782 removes the haul variables
 
 		# Only apply stress if we've not got our money's worth by this point.
 		if = {
@@ -24969,6 +24996,7 @@ laamp_base_contract_schemes.3781 = {
 				brave = medium_stress_impact_gain
 			}
 		}
+		trigger_event = laamp_base_contract_schemes.3782 #Unop Moved from above
 		ai_chance = {
 			base = 0
 			# Low value mods to sync with the low AI weights from other values given above.

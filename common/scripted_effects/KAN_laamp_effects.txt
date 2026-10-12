@@ -67,8 +67,15 @@ laamp_rewards_disburse_ordinary_currency_effect = {
 				# We pay players directly.
 				if = {
 					limit = {
-						scope:taker = { is_ai = no }
-						has_game_rule = kan_contract_payment_vanilla
+						#scope:taker = { is_ai = no }
+						#ADDED - changed things here a bit
+						OR = {
+							is_ai = no
+							scope:taker = { 
+								is_ai = no 
+								has_game_rule = kan_contract_payment_vanilla
+							}
+						}
 					}
 					if = {
 						limit = {
@@ -194,7 +201,7 @@ laamp_rewards_disburse_ordinary_currency_effect = {
 			if = {
 				limit = { scope:add_contact_hook_toggle = flag:yes }
 				add_hook_if_possible_default_length_effect = {
-					TARGET = scope:employer 
+					TARGET = scope:employer
 					TYPE = contact_list_weak_hook
 				}
 			}

@@ -143,12 +143,12 @@ camp_main_02 = {
 		camp_unlocks_second_officer = yes
 	}
 	ai_value = {
-		value = 100
+		value = camp_main_main_path_value
 		if = {
 			limit = {
-				num_domicile_buildings >= 8
+				num_domicile_buildings >= 6		#prev 4
 			}
-			multiply = 10	#prev 10
+			multiply = 1000	#prev 10
 		}
 	}
 
@@ -1694,7 +1694,7 @@ barber_tent_dentists_tools = { # Dentist's Tools
 		hard_casualty_modifier = -0.05
 	}
 	ai_value = {
-		value = camp_building_ai_base_t2
+		value = 5		#prev camp_building_ai_base_t2
 		if = {
 			limit = {
 				owner = { has_lifestyle = learning_lifestyle }
@@ -5752,7 +5752,7 @@ camp_perimeter_02 = {
 	parameters = {
 		camp_unlocks_forward_scouts = yes
 	}
-	ai_value = { value = 1000 }	#prev  camp_perimeter_main_path_value
+	ai_value = { value = 10000 }	#prev  camp_perimeter_main_path_value
 	asset = {
 		trigger = {
 			owner.culture = {
@@ -5803,7 +5803,7 @@ camp_perimeter_03 = {
 	parameters = {
 		camp_unlocks_forward_scouts = yes
 	}
-	ai_value = { value = 10000 }	#prev  camp_perimeter_main_path_value
+	ai_value = { value = 100000 }	#prev  camp_perimeter_main_path_value
 	asset = {
 		trigger = {
 			owner.culture = {

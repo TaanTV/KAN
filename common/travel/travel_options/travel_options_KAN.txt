@@ -16,14 +16,14 @@
 	on_applied_effect = {
 		custom_tooltip = adventurers_scout_for_talent_option.tt
 	}
-
+	
 	ai_will_do = {
-	    value = 0    #prev 100
-    #ADDED
-	    if = {
-	    	limit = { travel_plan_owner.court_positions_currently_available > 0 }
-	    	value = 1000000
-	    }
+		value = 0		#prev 100
+		#ADDED
+		if = {
+			limit = { travel_plan_owner.court_positions_currently_available > 0 }
+			value = 10000
+		}
 	}
 }
 
@@ -182,6 +182,6 @@ adventurers_forward_scouts_option = {
 	}
 	
 	ai_will_do = {
-		value = 1000000
+		value = 10000	#prev 100
 	}
 }

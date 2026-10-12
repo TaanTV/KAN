@@ -2541,7 +2541,7 @@ laamp_base_2001 = {
 				}
 				laamp_rewards_disburse_ordinary_currency_effect = {
 					GOLD = scope:task_contract.var:gold_success_qualified_reduced_tax
-					PRESTIGE = task_contract_success_prestige_gain_full_value
+					PRESTIGE = task_contract_success_prestige_gain_half_value	#prev task_contract_success_prestige_gain_full_value
 					PIETY = 0
 					PROVISIONS = task_contract_success_provisions_gain_major_value
 					OPINION = task_contract_opinion_reduced_reward_value
@@ -2667,7 +2667,7 @@ laamp_base_2001 = {
 				# Standard Penalties.
 				laamp_rewards_disburse_ordinary_currency_effect = {
 					GOLD = 0
-					PRESTIGE = task_contract_success_prestige_gain_critical_value
+					PRESTIGE = task_contract_success_prestige_gain_full_value		#prev task_contract_success_prestige_gain_critical_value
 					PIETY = 0
 					PROVISIONS = task_contract_success_provisions_gain_major_value
 					OPINION = task_contract_opinion_standard_failure_value
@@ -7137,7 +7137,7 @@ laamp_base_6021 = {
 				# Standard Rewards.
 				laamp_rewards_disburse_ordinary_currency_effect = {
 					GOLD = 0
-					PRESTIGE = task_contract_success_prestige_gain_full_value
+					PRESTIGE = task_contract_success_prestige_gain_critical_value	#prev task_contract_success_prestige_gain_full_value
 					PIETY = 0
 					PROVISIONS = task_contract_success_provisions_gain_minor_value
 					OPINION = task_contract_opinion_standard_reward_value
