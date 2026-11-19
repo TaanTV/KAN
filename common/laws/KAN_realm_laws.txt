@@ -45,6 +45,10 @@ camp_purpose_wanderers = {
 		#}
 	}
 
+	requires_approve = {
+		always = no
+	}
+
 	ai_will_do = { value = 0 }
 }
 
@@ -103,6 +107,10 @@ camp_purpose_mercenaries = {
 		#local_arbitration_boon_set_purpose_effect = {
 		#	MODIFIER = landless_local_arbitration_mercenaries_modifier
 		#}
+	}
+
+	requires_approve = {
+		always = no
 	}
 
 	ai_will_do = {
@@ -228,6 +236,10 @@ camp_purpose_scholars = {
 		#}
 	}
 
+	requires_approve = {
+		always = no
+	}
+
 	ai_will_do = {
 		# If we've picked a purpose, don't change it.
 		if = {
@@ -327,7 +339,22 @@ camp_purpose_explorers = {
 	flag = unlocks_camp_fire_local_hangers_on
 	flag = unlocks_camp_perimeter_extra_watch
 
-	can_keep = { realm_law_use_camp_purpose = yes }
+	potential = {
+		has_ep3_dlc_trigger = yes
+	}
+
+	can_keep = { 
+		realm_law_use_camp_purpose = yes 
+		has_ep3_dlc_trigger = yes
+	}
+
+	can_have = {
+		has_ep3_dlc_trigger = yes
+	}
+
+	can_pass = {
+		has_ep3_dlc_trigger = yes
+	}
 
 	pass_cost = {
 		prestige = {
@@ -353,6 +380,10 @@ camp_purpose_explorers = {
 		#local_arbitration_boon_set_purpose_effect = {
 		#	MODIFIER = landless_local_arbitration_explorers_modifier
 		#}
+	}
+
+	requires_approve = {
+		always = no
 	}
 
 	ai_will_do = {
@@ -452,8 +483,22 @@ camp_purpose_brigands = {
 	flag = unlocks_camp_fire_juicy_rumors
 	flag = unlocks_proving_grounds_the_stick_game
 
-	can_keep = { realm_law_use_camp_purpose = yes }
+	potential = {
+		has_ep3_dlc_trigger = yes
+	}
 
+	can_keep = { 
+		realm_law_use_camp_purpose = yes 
+		has_ep3_dlc_trigger = yes
+	}
+
+	can_have = {
+		has_ep3_dlc_trigger = yes
+	}
+
+	can_pass = {
+		has_ep3_dlc_trigger = yes
+	}
 	pass_cost = {
 		prestige = {
 			if = {
@@ -484,6 +529,10 @@ camp_purpose_brigands = {
 		# I'm pretty sure you can stay on the ground.
 		embarkation_cost_mult = -0.25	#prev -0.5
 		knight_limit = 2				#prev 3
+	}
+
+	requires_approve = {
+		always = no
 	}
 
 	ai_will_do = {
@@ -610,9 +659,22 @@ camp_purpose_legitimists = {
 	flag = unlocks_proving_grounds_bodyguard_drills
 	flag = unlocks_proving_grounds_lockwagon
 
-	can_keep = {
-		realm_law_use_camp_purpose = yes
+	potential = {
+		has_ep3_dlc_trigger = yes
+	}
+
+	can_keep = { 
+		realm_law_use_camp_purpose = yes 
+		has_ep3_dlc_trigger = yes
 		ep3_can_have_legitimists_camp_purpose_trigger = yes
+	}
+
+	can_have = {
+		has_ep3_dlc_trigger = yes
+	}
+
+	can_pass = {
+		has_ep3_dlc_trigger = yes
 	}
 
 	pass_cost = {
@@ -646,6 +708,10 @@ camp_purpose_legitimists = {
 		knight_limit = 5		#prev 8
 		#ADDED
 		provisions_gain_mult = 0.05
+	}
+
+	requires_approve = {
+		always = no
 	}
 
 	ai_will_do = {

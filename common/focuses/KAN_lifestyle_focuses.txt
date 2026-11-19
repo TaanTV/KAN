@@ -9,8 +9,8 @@
 	}
 	
 	modifier = {
-		general_opinion = 5						#prev 10
-		character_travel_speed_mult = 0.25		#prev 0.3
+		general_opinion = 5
+		character_travel_speed_mult = 0.3
 		diplomacy_scheme_phase_duration = -10 	#prev -15
 		#ADDED
 		#diplomacy = 1
@@ -48,7 +48,7 @@ martial_adventurer_focus = {
 	}
 	
 	modifier = {
-		advantage = 5							#prev 10
+		advantage = lifestyle_perk_advantage_bonus
 		maa_toughness_mult = 0.1				#prev 0.15
 		martial_scheme_phase_duration = -10		#prev -15
 		#ADDED

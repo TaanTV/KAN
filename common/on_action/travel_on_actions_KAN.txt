@@ -9,6 +9,12 @@ on_travel_plan_movement = {
 		passive_rite_learning_travel_province_effect = yes
 		# Wandering Lifestyle XP
 		wandering_lifestyle_exp_post_travel_effect = yes
+		# Merchant Power at Home replacement
+		merchant_market_familiarity_travel_effect = yes
+		# Merchant Souvenirs Aplenty replacement
+		merchant_souvenirs_aplenty_travel_effect = yes
+		# Merchant Travel Logs bonus
+		merchant_travel_logs_danger_xp_effect = yes
 		# Increase xp for traveler trait
 		traveler_progress_point_gain_effect = { CHANGE = 1 RANDOM_CHANGE = 1 }
 		# Increment the count of how many provinces the character has passed through
@@ -52,10 +58,10 @@ on_travel_plan_movement = {
 		# We change your Legend if you travel through somewhere relevant
 		if = {
 			limit = {
+				has_legend_chapter_trigger = { CHAPTER = conclusion }
 				current_travel_plan.current_location = {
 					has_any_point_of_interest_flag = yes
 				}
-				has_legend_chapter_trigger = { CHAPTER = conclusion }
 				NOT = {
 					promoted_legend ?= {
 						has_legend_chapter = {
@@ -313,11 +319,16 @@ on_travel_plan_movement = {
 				}
 				root.current_travel_plan.current_location.available_loot > 0
 			}
+			set_variable = {
+				name = local_deals_last_haggle_gold
+				value = adventurers_make_local_deals_option_value
+			}
 			add_gold = adventurers_make_local_deals_option_value
 			add_to_variable_list = {
 				name = haggle_provinces
 				target = root.current_travel_plan.current_location
 			}
+			make_local_deals_haggle_risk_effect = yes
 		}
 		if = {
 			limit = {
@@ -444,7 +455,15 @@ on_travel_plan_movement = {
 						NOT = { exists = inspiration }
 					}
 					save_scope_as = inspired_follower
-					grant_inspiration_to_character_no_court_artifacts_effect = { CHARACTER = this }
+					if = {
+						limit = {
+							root = { government_has_flag = government_is_merchant }
+						}
+						grant_merchant_inspiration_to_character_effect = { CHARACTER = this }
+					}
+					else = {
+						grant_inspiration_to_character_no_court_artifacts_effect = { CHARACTER = this }
+					}
 				}
 				send_interface_message = {
 					type = send_interface_message_good
@@ -535,7 +554,6 @@ on_travel_plan_movement = {
 				location.county.holder = {
 					NOR = {
 						has_relation_friend = root
-						has_relation_best_friend = root
 						root = {
 							is_tributary_of = prev
 						}
@@ -552,6 +570,69 @@ on_travel_plan_movement = {
 			}
 			trigger_event = migration_events.1051
 		}
+		#Christians get the opportunity to acquire pilgrim badges from other Christian faiths, if out traveling
+		if = {
+			limit = {
+				faith.religion = religion:christianity_religion
+				current_travel_plan.current_location.barony ?= { is_holy_site = yes }
+				religion:christianity_religion = {
+					any_faith = {
+						any_holy_site_barony = {
+							title_province = { this = root.current_travel_plan.current_location }
+						}
+					}
+				}
+				NOR = {
+					#Not if you already have a badge originating from this place
+					any_character_artifact = {
+						has_variable = is_pilgrim_badge
+						var:pilgrim_badge_location.title_province ?= root.current_travel_plan.current_location
+					}
+					#Nor if you can go on a pilgrimage here, sheesh
+					faith = {
+						any_holy_site_barony = {
+							title_province = { this = root.current_travel_plan.current_location }
+						}
+					}
+				}
+			}
+			trigger_event = travel_events.2310
+		}
+		# Merchant capstone
+		if = {
+			limit = {
+				current_travel_plan.current_location = {
+					any_province_domicile = {
+						has_domicile_parameter = company_curiosity_visitors
+						owner = {
+							NOT = {
+								is_target_in_variable_list = {
+									name = gdp_merchant_8020_cooldown
+									target = root
+								}
+							}
+						}
+					}
+				}
+			}
+			save_scope_as = visitor
+			current_travel_plan.current_location = {
+				random_province_domicile = {
+					limit = {
+						has_domicile_parameter = company_curiosity_visitors
+						owner = {
+							NOT = {
+								is_target_in_variable_list = {
+									name = gdp_merchant_8020_cooldown
+									target = root
+								}
+							}
+						}
+					}
+					owner = { trigger_event = gdp_merchant.8021 }
+				}
+			}
+		}
 	}
 }
 
@@ -562,7 +643,7 @@ adventurer_talent_scouting_on_action = {
 				limit = {
 					#is_ai = yes
 				}
-				add = 50	#prev 90
+				add = 10 # change 40	#prev 90
 			}
 			else = {
 				add = 50

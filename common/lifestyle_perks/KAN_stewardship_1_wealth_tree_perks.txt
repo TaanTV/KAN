@@ -13,6 +13,10 @@ heregeld_perk = {
 	name = {
 		first_valid = {
 			triggered_desc = {
+				trigger = { government_has_flag = government_is_merchant }
+				desc = heregeld_perk_merchant_name
+			}
+			triggered_desc = {
 				trigger = { has_government = landless_adventurer_government }
 				desc = heregeld_perk_adventurer_name
 			}
@@ -21,12 +25,17 @@ heregeld_perk = {
 	}
 	
 	government_character_modifier = {
-		flag = government_is_landless_adventurer
+		flag = government_uses_landless_lifestyle_perks
 		invert_check = yes
 		vassal_tax_contribution_mult = 0.1
 		tributary_tax_mult = 0.1
 	}
 	
+	government_character_modifier = {
+		flag = government_is_merchant
+		trade_route_length_add = 2
+	}
+
 	government_character_modifier = {
 		flag = government_is_landless_adventurer
 		provisions_capacity_mult = 0.33		#prev 0.5
@@ -46,6 +55,10 @@ detailed_ledgers_perk = {
 	name = {
 		first_valid = {
 			triggered_desc = {
+				trigger = { government_has_flag = government_is_merchant }
+				desc = detailed_ledgers_perk_merchant_name
+			}
+			triggered_desc = {
 				trigger = { has_government = landless_adventurer_government }
 				desc = detailed_ledgers_perk_adventurer_name
 			}
@@ -54,10 +67,16 @@ detailed_ledgers_perk = {
 	}
 	
 	government_character_modifier = {
-		flag = government_is_landless_adventurer
+		flag = government_uses_landless_or_trader_lifestyle_perks
 		invert_check = yes
-		republic_government_opinion = 20
+		republic_government_opinion = 10
 		republic_government_tax_contribution_mult = 0.15
+	}
+	
+	government_character_modifier = {
+		flag = government_is_merchant
+		trade_expertise_growth_mult = 0.1
+		trade_expertise_decline_mult = -0.5
 	}
 	
 	government_character_modifier = {
@@ -73,6 +92,11 @@ detailed_ledgers_perk = {
 	government_character_modifier = {
 		flag = government_is_administrative
 		administrative_government_tax_contribution_mult = 0.1
+	}
+	
+	government_character_modifier = {
+		flag = government_is_republic
+		trade_capacity_mult = 0.05
 	}
 
 	government_character_modifier = {

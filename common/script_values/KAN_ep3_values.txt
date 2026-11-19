@@ -90,11 +90,11 @@ task_contract_failure_piety_loss_full_value = {
 ## Default scaling reward.
 task_contract_success_gold_gain_full_value = {
 	# Base value + multiplier.
-	value = 25		#prev 50
-	if = {
-		limit = { has_game_rule = kan_contract_payment_amount_vanilla }
-		add = 25
-	}
+	value = 15
+	#if = {
+	#	limit = { has_game_rule = kan_contract_payment_amount_vanilla }
+	#	add = 25
+	#}
 	multiply = task_contract_tier_gold_multiplier_value
 	# Lifestyle perks.
 	if = {
@@ -107,7 +107,7 @@ task_contract_success_gold_gain_full_value = {
 	# Stuff that NEEDS to stay at the bottom.
 	## Vary our final tally up a bit.
 	if = {
-		limit = { 
+		limit = {
 			exists = scope:task_contract.task_contract_employer	#prev scope:task_contract.task_contract_taker
 			scope:task_contract.task_contract_employer.ai_greed != 0
 		}
@@ -130,7 +130,7 @@ task_contract_success_gold_gain_full_value = {
 		add = 10
 	}
 	## Shouldn't happen but just in case someone is really, really, _really_ stingy: never pay less than at least a truly pathetic amount.
-	min = 12		#prev 25
+	min = 5
 	# Changes from gamerules
 	multiply = contract_payment_amount_game_rule_multiplicator
 	ceiling = yes
@@ -140,23 +140,23 @@ task_contract_success_gold_gain_full_value = {
 ## Travel scaling reward.
 task_contract_success_gold_gain_travel_value = {
 	# Base value + multiplier.
-	value = 20		#prev 75 #Damn..
+	value = 10		#prev 20 #Damn..
+	#if = {
+	#	limit = { has_game_rule = kan_contract_payment_amount_vanilla }
+	#	add = 55
+	#}
 	if = {
-		limit = { has_game_rule = kan_contract_payment_amount_vanilla }
-		add = 55
-	}
-	else_if = {
 		limit = {
 			exists = scope:task_contract.task_contract_employer
 			exists = scope:task_contract.task_contract_destination
 			"scope:task_contract.task_contract_employer.squared_distance(scope:task_contract.task_contract_destination)" > squared_distance_large
 		}
-		add = 10
+		add = 5
 		if = {
 			limit = {
 				"scope:task_contract.task_contract_employer.squared_distance(scope:task_contract.task_contract_destination)" > squared_distance_huge
 			}
-			add = 20
+			add = 5
 		}
 	}
 	multiply = task_contract_tier_gold_multiplier_value
@@ -204,7 +204,7 @@ task_contract_success_gold_gain_travel_value = {
 		add = 5		#prev 10
 	}
 	## Shouldn't happen but just in case someone is really, really, _really_ stingy: never pay less than at least a truly pathetic amount.
-	min = 7		#prev 25
+	min = 5
 	# Changes from gamerules
 	multiply = contract_payment_amount_game_rule_multiplicator
 	ceiling = yes
@@ -214,11 +214,11 @@ task_contract_success_gold_gain_travel_value = {
 ## Criminal scaling reward.
 task_contract_success_gold_gain_crime_value = {
 	# Base value + multiplier.
-	value = 35		#prev 100
-	if = {
-		limit = { has_game_rule = kan_contract_payment_amount_vanilla }
-		add = 65
-	}
+	value = 25
+	#if = {
+	#	limit = { has_game_rule = kan_contract_payment_amount_vanilla }
+	#	add = 65
+	#}
 	multiply = task_contract_tier_gold_multiplier_value
 	# Lifestyle perks.
 	if = {
@@ -231,7 +231,10 @@ task_contract_success_gold_gain_crime_value = {
 		}
 		if = {
 			limit = {
-				scope:task_contract.task_contract_taker = { has_perk = malice_implicit_perk }
+				scope:task_contract.task_contract_taker = {
+					has_perk = malice_implicit_perk
+					NOT = { government_has_flag = government_is_merchant }
+				}
 			}
 			multiply = 1.33		#prev 2
 		}
@@ -271,9 +274,9 @@ task_contract_success_gold_gain_crime_value = {
 		add = 10
 	}
 	## Shouldn't happen but just in case someone is really, really, _really_ stingy: never pay less than at least a truly pathetic amount.
-	min = 20	#prev 60
+	min = 15
 	# Changes from gamerules
-	multiply = contract_payment_amount_game_rule_multiplicator
+	#multiply = contract_payment_amount_game_rule_multiplicator
 	ceiling = yes
 }
 
@@ -290,12 +293,6 @@ human_provision_value = {
 	add = scope:recipient.current_weight
 	multiply = 2	#prev 3
 }
-
-see_how_its_done_gold_reward_value = {
-	value = 5	#prev 20
-	multiply = been_there_done_that_check_multiplier_value
-}
-
 
 default_temperament_high_value_scale = {
 	value = prestige_level

@@ -14,7 +14,7 @@
 		#martial_per_piety_level = 1
 		#intrigue_per_piety_level = 1
 		#prowess_per_piety_level = 1
-		#ADDED - Idk why adventurers have to receive any additional buffs from this, but if they do - some HOF opinion buff will suffice
-		religious_head_opinion = 10
+		#ADDED - Idk why adventurers have to receive any additional buffs from this, but if they do - some clergy opinion buff will suffice
+		clergy_opinion = 10
 	}
 }

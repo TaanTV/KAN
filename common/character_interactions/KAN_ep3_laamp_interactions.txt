@@ -69,7 +69,7 @@ negotiate_settlement_interaction = {
 			}
 		}
 		is_landed = yes
-		has_ep3_dlc_trigger = yes
+		has_playable_adventurer_dlc_trigger = yes
 	}
 
 	is_shown = {
@@ -166,6 +166,15 @@ negotiate_settlement_interaction = {
 			}
 			custom_description = {
 				text = negotiate_settlement_landless_adventurer_tt
+				always = no
+			}
+		}
+		trigger_if = { # Can't purchase merchant titles
+			limit = {
+				scope:target ?= { has_variable = merchant_creation_reason }
+			}
+			custom_description = {
+				text = negotiate_settlement_merchant_tt
 				always = no
 			}
 		}
@@ -480,7 +489,7 @@ negotiate_settlement_interaction = {
 				value = 0
 				if = {
 					limit = { scope:target.tier = tier_county }
-					add = scope:target.development_level
+					add = scope:target.prosperity_level
 					scope:target = {
 						every_county_province = { add = num_buildings }
 					}
@@ -489,7 +498,7 @@ negotiate_settlement_interaction = {
 					scope:target = {
 						every_de_jure_county = {
 							limit = { ep3_negotiate_settlement_valid_county_trigger = yes }
-							add = development_level
+							add = prosperity_level
 							every_county_province = { add = num_buildings }
 						}
 					}
@@ -967,13 +976,13 @@ negotiate_settlement_interaction = {
 					limit = {
 						scope:target.tier = tier_county
 					}
-					subtract = scope:target.development_level
+					subtract = scope:target.prosperity_level
 				}
 				if = {
 					limit = {
 						scope:target.tier > tier_county
 					}
-					subtract = scope:target.title_capital_county.development_level
+					subtract = scope:target.title_capital_county.prosperity_level
 				}
 			}
 		}
@@ -1206,7 +1215,7 @@ contact_list_request_interaction = { # make a request, make_a_request
 
 	is_shown = {
 		scope:actor = { government_has_flag = government_is_landless_adventurer }
-		has_ep3_dlc_trigger = yes
+		has_playable_adventurer_dlc_trigger = yes
 		scope:actor != scope:recipient
 	}
 	is_valid_showing_failures_only = {
@@ -1216,7 +1225,6 @@ contact_list_request_interaction = { # make a request, make_a_request
 			NOR = {
 				is_at_war_with = scope:actor
 				has_relation_rival = scope:actor
-				has_relation_nemesis = scope:actor
 				has_opinion_modifier = {
 					target = scope:actor
 					modifier = released_from_prison
@@ -1599,7 +1607,7 @@ contact_list_request_interaction = { # make a request, make_a_request
 				limit = { scope:request_contract = yes }
 				divide = 3
 			}
-			min = 50
+			min = 100
 		}
 	}
 
@@ -1706,7 +1714,7 @@ contact_list_request_interaction = { # make a request, make_a_request
 							name = provisions_transformed_to_gold_value
 							value = {
 								value = scope:provisions_overflow_value
-								multiply = 0.05
+								multiply = 0.02
 							}
 						}
 					}
@@ -1768,7 +1776,7 @@ contact_list_request_interaction = { # make a request, make_a_request
 						name = requested_gold_value
 						value = {
 							value = scope:recipient.gold
-							divide = 4
+							divide = 8
 							multiply = {
 								value = scope:recipient.ai_greed
 								divide = -300
@@ -1792,43 +1800,12 @@ contact_list_request_interaction = { # make a request, make_a_request
 							}
 							max = {
 								value = scope:recipient.medium_gold_value
-								#Rounds up to the closest number divisible by 5, but also divide by 2.
-								divide = 10
-								floor = yes
-								multiply = 5
+								#Rounds up to the closest number divisible by 5
+								round_to = 5
 								
 							}
-							#max = {
-							#	scope:recipient.culture = {
-							#		if = {
-							#			limit = {
-							#				has_cultural_era_or_later = culture_era_late_medieval
-							#			}
-							#			value = 150
-							#		}
-							#		else_if = {
-							#			limit = {
-							#				has_cultural_era_or_later = culture_era_high_medieval
-							#			}
-							#			value = 100
-							#		}
-							#		else_if = {
-							#			limit = {
-							#				has_cultural_era_or_later = culture_era_early_medieval
-							#			}
-							#			value = 75
-							#		}
-							#		else_if = {
-							#			limit = {
-							#				has_cultural_era_or_later = culture_era_tribal
-							#			}
-							#			value = 50
-							#		}
-							#		else = {
-							#			value = 25
-							#		}
-							#	}
-							#}
+							floor = yes
+							min = 5
 						}
 					}
 					send_interface_toast = {
@@ -2390,7 +2367,6 @@ contact_list_request_interaction = { # make a request, make_a_request
 		scope:recipient = {
 			add_prestige = {
 				value = scope:puppet_or_actor.prestige_level
-				min = 0.5
 				multiply = 100
 			}
 		}
@@ -2407,6 +2383,7 @@ contact_list_request_interaction = { # make a request, make_a_request
 	}
 	ai_targets = { ai_recipients = contacts }
 	ai_targets = { ai_recipients = hooked_characters }
+	ai_target_quick_trigger = { adult = yes }
 	auto_accept = {
 		scope:actor = { has_usable_hook = scope:recipient }
 		scope:recipient = { is_ai = yes }
@@ -2470,7 +2447,7 @@ contact_list_request_interaction = { # make a request, make_a_request
 		}
 
 		modifier = {
-			add = -50
+			add = -30
 			desc = contact_list_request_interaction.request_gold.poor_recipient
 			scope:request_gold ?= yes
 			scope:recipient = {
@@ -2816,7 +2793,7 @@ evict_adventurer_interaction = {
 
 	is_shown = {
 		scope:puppet_or_actor ?= { is_landed = yes }
-		has_ep3_dlc_trigger = yes
+		has_playable_adventurer_dlc_trigger = yes
 		scope:recipient != scope:puppet_or_actor
 		scope:recipient = {
 			government_has_flag = government_is_landless_adventurer

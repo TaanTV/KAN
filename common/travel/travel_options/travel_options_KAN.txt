@@ -1,12 +1,19 @@
 ﻿adventurers_scout_for_talent_option = {
 	is_shown = {
-   		has_government = landless_adventurer_government
-		NOT = { has_perk = toe_the_line_perk }
+		OR = {
+			government_has_flag = government_is_merchant
+			AND = {			
+		   		has_government = landless_adventurer_government
+				NOT = { has_perk = toe_the_line_perk }
+			}
+		}
 	}
 
 	is_valid = {
-		NOT = { has_perk = toe_the_line_perk }
-		has_government = landless_adventurer_government
+		trigger_if = {
+			limit = { has_government = landless_adventurer_government }
+			NOT = { has_perk = toe_the_line_perk }
+		}
 	}
 	
 	travel_modifier = {
@@ -21,7 +28,12 @@
 		value = 0		#prev 100
 		#ADDED
 		if = {
-			limit = { travel_plan_owner.court_positions_currently_available > 0 }
+			limit = { 
+				travel_plan_owner = { 
+					has_government = landless_adventurer_government
+					court_positions_currently_available > 0 
+				}
+			}
 			value = 10000
 		}
 	}
@@ -29,12 +41,25 @@
 
 adventurers_make_local_deals_option = {
 	is_shown = {
-   		has_government = landless_adventurer_government
+		OR = {
+			AND = {
+				government_has_flag = government_is_merchant
+				has_realm_law = company_purpose_caravaneer
+			}
+			has_government = landless_adventurer_government
+		}
 	}
 
 	is_valid = {
-		has_perk = fearful_troops_perk
-		has_government = landless_adventurer_government
+		trigger_if = {
+			limit = { government_has_flag = government_is_merchant }
+			has_realm_law = company_purpose_caravaneer
+		}
+		trigger_if = {
+			limit = { has_government = landless_adventurer_government }
+			has_perk = fearful_troops_perk
+			has_government = landless_adventurer_government
+		}
 	}
 	
 	travel_modifier = {
@@ -45,6 +70,7 @@ adventurers_make_local_deals_option = {
 	
 	on_applied_effect = {
 		custom_tooltip = adventurers_make_local_deals_option.tt
+		custom_tooltip = adventurers_make_local_deals_option.haggle_risk.tt
 	}
 	
 	ai_will_do = {
@@ -106,12 +132,25 @@ adventurers_encourage_relationships_option = {
 
 adventurers_gather_inspiration_option = {
 	is_shown = {
-   		has_government = landless_adventurer_government
+		OR = {
+			AND = {
+				government_has_flag = government_is_merchant
+				has_realm_law = company_purpose_artisan
+			}
+			has_government = landless_adventurer_government
+		}
 	}
 
 	is_valid = {
-		has_perk = popular_figurehead_perk
-		has_government = landless_adventurer_government
+		trigger_if = {
+			limit = { government_has_flag = government_is_merchant }
+			has_realm_law = company_purpose_artisan
+		}
+		trigger_if = {
+			limit = { has_government = landless_adventurer_government }
+			has_perk = popular_figurehead_perk
+			has_government = landless_adventurer_government
+		}
 	}
 	
 	travel_modifier = {

@@ -40,6 +40,8 @@ vigmen = {
 	pursuit = 0
 	screen = 22
 	
+	control_value = 2
+
 	can_recruit = {
 		valid_for_maa_trigger = { PARAMETER = unlock_maa_vigmen }
 	}
@@ -77,6 +79,8 @@ bondi = {
 	pursuit = 12
 	screen = 0
 	
+	control_value = 2
+
 	can_recruit = {
 		valid_for_maa_trigger = { PARAMETER = unlock_maa_bondi }
 	}
@@ -118,6 +122,8 @@ varangian_veterans = {
 	pursuit = 10
 	screen = 0
 	
+	control_value = 6
+
 	can_recruit = {
 		valid_for_maa_trigger = { PARAMETER = unlock_maa_varangian_veterans }
 		NOT = {
@@ -164,6 +170,8 @@ jomsviking_pirates = {
 	pursuit = 40
 	screen = 40
 	
+	control_value = 2
+
 	counters = {
 		heavy_infantry = 1
 		archers = 1

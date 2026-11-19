@@ -2,7 +2,7 @@
 	icon = piety_positive
 	stress_loss_mult = 0.05
 	monthly_piety = 0.2
-	life_expectancy = 1
+	life_expectancy = 1		#prev 5
 
 	scale = {
 		value = {
@@ -139,9 +139,8 @@ ep3_laamp_flavour_ewan_0051_check_building_camp_perimeter_modifier = {
 ep3_gave_out_provisions = {
     icon = county_modifier_opinion_negative
     stacking = yes
-	tax_mult = -0.02
-    county_opinion_add = -5
-    supply_limit_mult = -0.1
+	popular_opinion_add = -5	#prev -15
+	supply_limit_mult = -0.1	#prev -0.2
 }
 
 # Confidence trickster

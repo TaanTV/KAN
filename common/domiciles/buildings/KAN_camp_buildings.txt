@@ -791,7 +791,7 @@ supply_tent_sutler = { # Sutler
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = 0.35
+		domicile_monthly_gold_add = 0.2
 		monthly_stewardship_lifestyle_xp_gain_mult = 0.10
 		supply_capacity_mult = 0.25
 	}
@@ -1323,7 +1323,7 @@ barber_tent_01 = {
 		epidemic_travel_danger = -10
 		negate_health_penalty_add = 0.2
 		hard_casualty_modifier = -0.02
-		domicile_monthly_gold_add = 0.25
+		domicile_monthly_gold_add = 0.15
 	}
 
 	parameters = {
@@ -1372,7 +1372,7 @@ barber_tent_02 = {
 		epidemic_travel_danger = -5
 		negate_health_penalty_add = 0.05
 		hard_casualty_modifier = -0.02
-		domicile_monthly_gold_add = 0.15
+		domicile_monthly_gold_add = 0.1
 	}
 
 	parameters = {
@@ -1425,7 +1425,7 @@ barber_tent_03 = {
 		epidemic_travel_danger = -5
 		negate_health_penalty_add = 0.05
 		hard_casualty_modifier = -0.02
-		domicile_monthly_gold_add = 0.15
+		domicile_monthly_gold_add = 0.1
 	}
 
 	parameters = {
@@ -1478,7 +1478,7 @@ barber_tent_04 = {
 		epidemic_travel_danger = -7
 		negate_health_penalty_add = 0.05
 		hard_casualty_modifier = -0.02
-		domicile_monthly_gold_add = 0.15
+		domicile_monthly_gold_add = 0.1
 	}
 
 	parameters = {
@@ -1532,7 +1532,7 @@ barber_tent_05 = {
 		epidemic_travel_danger = -7
 		negate_health_penalty_add = 0.1
 		hard_casualty_modifier = -0.02
-		domicile_monthly_gold_add = 0.15
+		domicile_monthly_gold_add = 0.1
 	}
 
 	parameters = {
@@ -1587,7 +1587,7 @@ barber_tent_06 = {
 		epidemic_travel_danger = -10
 		negate_health_penalty_add = 0.1
 		hard_casualty_modifier = -0.05
-		domicile_monthly_gold_add = 0.15
+		domicile_monthly_gold_add = 0.1
 	}
 
 	parameters = {
@@ -2722,7 +2722,7 @@ baggage_train_bartering_grounds = { # Bartering Grounds
 
 	character_modifier = {
 		monthly_stewardship_lifestyle_xp_gain_mult = 0.1
-		domicile_monthly_gold_add = 0.25
+		domicile_monthly_gold_add = 0.15
 	}
 
 	parameters = {
@@ -3437,7 +3437,7 @@ mess_tent_herbalists = { # Herbalists
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = 0.25
+		domicile_monthly_gold_add = 0.2
 	}
 
 	parameters = {
@@ -3493,7 +3493,7 @@ mess_tent_brewers = { # Brewers
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = 0.35
+		domicile_monthly_gold_add = 0.2
 		courtier_opinion = 10
 		#epidemic_resistance = 5
 	}
@@ -3550,9 +3550,8 @@ mess_tent_curers = { # Curers
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = 0.25
-		#negate_health_penalty_add = 0.1
-		health = 0.05
+		domicile_monthly_gold_add = 0.2
+		negate_health_penalty_add = 0.1
 		provisions_capacity_mult = 0.1
 		#supply_capacity_mult = 0.1
 	}
@@ -3604,9 +3603,9 @@ mess_tent_bakers = { # Bakers
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = 0.25
+		domicile_monthly_gold_add = 0.15
 		courtier_opinion = 5
-		skirmishers_pursuit_mult = 0.25
+		skirmishers_pursuit_mult = 0.2
 		light_cavalry_pursuit_mult = 0.2
 		archer_cavalry_pursuit_mult = 0.2
 	}
@@ -5404,12 +5403,12 @@ proving_grounds_lockwagon = { # Lockwagon
 			floor = yes
 		}
 	}
-
 	can_construct = {
 		trigger_if = {
-			limit = { 
+			limit = {
+				NOT = { is_ai = yes }	# ИИ строит вне зависимости от типа лагеря
 				OR = {
-					has_game_rule = kan_camp_building_restrictions_default 
+					has_game_rule = kan_camp_building_restrictions_default
 					AND = {
 						has_game_rule = kan_camp_building_restrictions_wanderers_exemption
 						NOT = { has_realm_law = camp_purpose_wanderers }

@@ -14,3 +14,23 @@ KAN_mod_exists = {
 		}
 	}
 }
+
+# A title is destroyed
+# root = the holder before destruction
+# scope:landed_title = the title that is being destroyed
+# Does *not* provide scope:transfer_type
+on_title_destroyed = {
+	on_actions = { 
+		KAN_landless_troops_conversion
+	}
+}
+
+KAN_landless_troops_conversion = {
+	trigger = {
+		#hopefully this is the only trigger needed and those who become true-landless will just not have any MAAs..
+		scope:landed_title = { has_variable = adventurer_creation_reason }
+	}		
+	effect = {
+		convert_maa_to_special_troops = yes
+	}
+}

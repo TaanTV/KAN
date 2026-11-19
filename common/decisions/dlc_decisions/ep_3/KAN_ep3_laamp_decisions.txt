@@ -29,7 +29,7 @@ wipe_slate_decision = {
 
 	cost = {
 		gold = {
-			value = 75	#prev 100
+			value = 50
 			add = {
 				value = highest_held_title_tier
 				#ADDED
@@ -39,7 +39,7 @@ wipe_slate_decision = {
 					min = 0
 				}
 				else = { add = -1 }
-				multiply = 25
+				multiply = 10
 			}
 			#ADDED
 			add = {

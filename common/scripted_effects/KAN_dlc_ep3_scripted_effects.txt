@@ -1,99 +1,4 @@
-﻿destroy_laamp_effect = {
-	$ADVENTURER$ = {
-		save_scope_as = the_adventurer
-		# If we weren't an adventurer before, make us one.
-		if = {
-			limit = {
-				NOT = { has_trait = adventurer }
-			}
-			add_trait = adventurer
-		}
-		hidden_effect = {
-			every_courtier = {
-				set_variable = {
-					name = former_camp_leader
-					value = scope:the_adventurer
-				}
-				add_trait = adventurer_follower
-			}
-		}
-		custom_tooltip = {
-			text = destroy_laamp_effect.tt.domicile_liquidated
-			laamp_clear_domicile_buildings_effect = yes
-		}
-		# Contacts have opinions™ about you.
-		## Be they good.
-		every_contact = {
-			limit = {
-				opinion = {
-					target = scope:the_adventurer
-					value >= 1
-				}
-			}
-			custom = custom.every_contact_with_positive_opinion
-			add_opinion = {
-				target = scope:the_adventurer
-				modifier = pleased_former_contact_opinion
-				opinion = 30
-			}
-			hidden_effect = {
-				if = {
-					limit = {
-						can_set_relation_potential_friend_trigger = { CHARACTER = scope:the_adventurer }
-					}
-					set_relation_potential_friend = scope:the_adventurer
-				}
-			}
-		}
-		## Or bad.
-		every_contact = {
-			limit = {
-				opinion = {
-					target = scope:the_adventurer
-					value < 1
-				}
-			}
-			# And neutral but _eh_.
-			custom = custom.every_contact_with_negative_opinion
-			add_opinion = {
-				target = scope:the_adventurer
-				modifier = frustrated_former_contact_opinion
-				opinion = -30
-			}
-			hidden_effect = {
-				if = {
-					limit = {
-						can_set_relation_potential_rival_trigger = { CHARACTER = scope:the_adventurer }
-					}
-					set_relation_potential_rival = scope:the_adventurer
-				}
-			}
-		}
-		# Destroy your main title.
-		every_held_title = {
-			limit = { has_variable = adventurer_creation_reason }
-			save_scope_as = landless_adventurer_title
-			scope:the_adventurer = { destroy_title = scope:landless_adventurer_title }
-		}
-		# Ironically, we only want to use this effect if you're _not_ admin — it'll reset you nicely to the best government for you, but if you're admin, you should stay admin.
-		if = {
-			limit = {
-				OR = {
-					government_has_flag = government_is_clan
-					government_has_flag = government_is_tribal_excluding_wanua
-					government_has_flag = government_is_feudal
-				}
-			}
-			admin_government_reset_effect = yes #this only contains Clan, Tribal, Nomadic and Feudal
-		}
-		# Clean up story no-movement flags.
-		remove_character_flag = laamp_stay_same_kingdom
-		
-		#ADDED Copy-paste this to the end of this effect if it's ever changed
-		convert_maa_to_special_troops = yes
-	}
-}
-
+﻿
 bandit_king_maa_spawn_effect = {
 
 	save_scope_as = bandit_king
@@ -733,11 +638,11 @@ disburse_camp_party_reward_effect = {
 						flag:camp_perimeter_03 = { add_domicile_building = camp_perimeter_04 }
 						flag:camp_perimeter_04 = { add_domicile_building = camp_perimeter_05 }
 						flag:camp_perimeter_05 = { add_domicile_building = camp_perimeter_06 }
-						flag:mess_tent_01 = { add_domicile_building = mess_tent_01 }
-						flag:mess_tent_02 = { add_domicile_building = mess_tent_02 }
-						flag:mess_tent_03 = { add_domicile_building = mess_tent_03 }
-						flag:mess_tent_04 = { add_domicile_building = mess_tent_04 }
-						flag:mess_tent_05 = { add_domicile_building = mess_tent_05 }
+						flag:mess_tent_01 = { add_domicile_building = mess_tent_02 }
+						flag:mess_tent_02 = { add_domicile_building = mess_tent_03 }
+						flag:mess_tent_03 = { add_domicile_building = mess_tent_04 }
+						flag:mess_tent_04 = { add_domicile_building = mess_tent_05 }
+						flag:mess_tent_05 = { add_domicile_building = mess_tent_06 }
 					}
 				}
 				}

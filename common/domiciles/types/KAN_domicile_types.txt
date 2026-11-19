@@ -3,6 +3,8 @@
 camp = {
 	rename_window = primary_title
 
+	header = "gfx/interface/window_domiciles/domicile_header_background.dds"
+	frame = "gfx/interface/window_domiciles/domicile_frame.dds"
 	illustration = "gfx/interface/illustrations/event_scenes/ep3_camp_arid_terrain.dds"
 	icon = "gfx/interface/icons/flat_icons/flat_camp.dds"
 	map_pin_texture = "gfx/interface/icons/map_icons/map_icon_camp.dds"
@@ -10,8 +12,8 @@ camp = {
 
 	provisions = yes
 	travel = yes
-
 	can_move_manually = yes
+	move_instantly = no
 
 	domicile_temperament_low_modifier = {
 		name = domicile_temperament_low
@@ -63,6 +65,8 @@ camp = {
 		scale = {
 			add = default_temperament_high_value_scale
 			min = 1
+			#ADDED - smth inside somewhere is uncapped, cap them all.
+			max = 10
 		}
 	}
 
@@ -72,7 +76,7 @@ camp = {
 		scale = {
 			add = default_temperament_high_value_scale
 			min = 1
-			max = 5	#prev 10
+			max = 10
 			if = {
 				limit = {
 					NOT = { has_perk = faithful_perk }
@@ -88,6 +92,8 @@ camp = {
 		scale = {
 			add = default_temperament_high_value_scale
 			min = 1
+			#ADDED - smth inside somewhere is uncapped, cap them all.
+			max = 10
 			if = {
 				limit = {
 					NOT = { has_perk = absolute_control_perk }
@@ -100,10 +106,12 @@ camp = {
 
 	domicile_temperament_high_modifier = {
 		name = domicile_temperament_high
-		personal_scheme_phase_duration_add = -15	#prev -25
+		personal_scheme_phase_duration_add = -10	#prev -25
 		scale = {
 			add = default_temperament_high_value_scale
 			min = 1
+			#ADDED - smth inside somewhere is uncapped, cap them all.
+			max = 10
 			if = {
 				limit = {
 					NOT = { has_perk = writing_history_perk }

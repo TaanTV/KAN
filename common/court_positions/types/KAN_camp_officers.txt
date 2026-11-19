@@ -172,7 +172,7 @@ second_camp_officer = {
 	}
 
 	is_shown = {
-		has_ep3_dlc_trigger = yes
+		has_playable_adventurer_dlc_trigger = yes
 		custom_tooltip = {
 			text = landless_government_tt
 			government_has_flag = government_is_landless_adventurer
@@ -417,7 +417,7 @@ quartermaster_camp_officer = {
 	}
 
 	is_shown = {
-		has_ep3_dlc_trigger = yes
+		has_playable_adventurer_dlc_trigger = yes
 		custom_tooltip = {
 			text = landless_government_tt
 			government_has_flag = government_is_landless_adventurer
@@ -575,7 +575,7 @@ armorer_camp_officer = {
 	}
 
 	is_shown = {
-		has_ep3_dlc_trigger = yes
+		has_playable_adventurer_dlc_trigger = yes
 		custom_tooltip = {
 			text = landless_government_tt
 			government_has_flag = government_is_landless_adventurer
@@ -812,7 +812,7 @@ chief_forager_camp_officer = {
 	}
 
 	is_shown = {
-		has_ep3_dlc_trigger = yes
+		has_playable_adventurer_dlc_trigger = yes
 		custom_tooltip = {
 			text = landless_government_tt
 			government_has_flag = government_is_landless_adventurer
@@ -997,7 +997,7 @@ master_thief_camp_officer = {
 	}
 
 	is_shown = {
-		has_ep3_dlc_trigger = yes
+		has_playable_adventurer_dlc_trigger = yes
 		custom_tooltip = {
 			text = landless_government_tt
 			government_has_flag = government_is_landless_adventurer
@@ -1050,19 +1050,19 @@ master_thief_camp_officer = {
 		}
 		poor = {
 			owned_scheme_secrecy_add = 6
-			domicile_monthly_gold_add = 0.2
+			domicile_monthly_gold_add = 0.1
 		}
 		average = {
 			owned_scheme_secrecy_add = 9
-			domicile_monthly_gold_add = 0.35
+			domicile_monthly_gold_add = 0.15
 		}
 		good = {
 			owned_scheme_secrecy_add = 12
-			domicile_monthly_gold_add = 0.5
+			domicile_monthly_gold_add = 0.25
 		}
 		excellent = {
 			owned_scheme_secrecy_add = 15
-			domicile_monthly_gold_add = 0.65
+			domicile_monthly_gold_add = 0.3
 		}
 	}
 
@@ -1070,7 +1070,7 @@ master_thief_camp_officer = {
 	custom_employer_modifier_description = master_thief_camp_officer_employer_custom_effect_description
 
 	base_employer_court_modifier = {
-		#domicile_monthly_gold_add = 0.25
+		#domicile_monthly_gold_add = 0.1
 	}
 
 	modifier = {
@@ -1172,7 +1172,7 @@ head_porter_camp_officer = {
 	}
 
 	is_shown = {
-		has_ep3_dlc_trigger = yes
+		has_playable_adventurer_dlc_trigger = yes
 		custom_tooltip = {
 			text = landless_government_tt
 			government_has_flag = government_is_landless_adventurer
@@ -1224,19 +1224,19 @@ head_porter_camp_officer = {
 	scaling_employer_modifiers = {
 		terrible = {
 			supply_capacity_add = 5
-			provisions_loss_mult = -0.02
+			provisions_loss_mult = -0.04
 		}
 		poor = {
 			supply_capacity_add = 10
-			provisions_loss_mult = -0.04
+			provisions_loss_mult = -0.08
 		}
 		average = {
 			supply_capacity_add = 15
-			provisions_loss_mult = -0.07
+			provisions_loss_mult = -0.12
 		}
 		good = {
 			supply_capacity_add = 20
-			provisions_loss_mult = -0.13
+			provisions_loss_mult = -0.16
 
 		}
 		excellent = {
@@ -1479,7 +1479,7 @@ head_groom_camp_officer = {
 	}
 
 	is_shown = {
-		has_ep3_dlc_trigger = yes
+		has_playable_adventurer_dlc_trigger = yes
 		custom_tooltip = {
 			text = landless_government_tt
 			government_has_flag = government_is_landless_adventurer
@@ -1677,7 +1677,7 @@ huntperson_camp_officer = {
 	}
 
 	is_shown = {
-		has_ep3_dlc_trigger = yes
+		has_playable_adventurer_dlc_trigger = yes
 		custom_tooltip = {
 			text = landless_government_tt
 			government_has_flag = government_is_landless_adventurer
@@ -1865,7 +1865,7 @@ kennelperson_camp_officer = {
 	}
 
 	is_shown = {
-		has_ep3_dlc_trigger = yes
+		has_playable_adventurer_dlc_trigger = yes
 		custom_tooltip = {
 			text = landless_government_tt
 			government_has_flag = government_is_landless_adventurer
@@ -2032,7 +2032,7 @@ chief_engineer_camp_officer = {
 	}
 
 	is_shown = {
-		has_ep3_dlc_trigger = yes
+		has_playable_adventurer_dlc_trigger = yes
 		custom_tooltip = {
 			text = landless_government_tt
 			government_has_flag = government_is_landless_adventurer
@@ -2250,7 +2250,7 @@ witness_camp_officer = {
 	}
 
 	is_shown = {
-		has_ep3_dlc_trigger = yes
+		has_playable_adventurer_dlc_trigger = yes
 		custom_tooltip = {
 			text = landless_government_tt
 			government_has_flag = government_is_landless_adventurer
@@ -2444,7 +2444,7 @@ person_haggler_camp_officer = {
 	}
 
 	is_shown = {
-		has_ep3_dlc_trigger = yes
+		has_playable_adventurer_dlc_trigger = yes
 		custom_tooltip = {
 			text = landless_government_tt
 			government_has_flag = government_is_landless_adventurer
@@ -2640,7 +2640,7 @@ camp_cook_camp_officer = {
 	}
 
 	is_shown = {
-		has_ep3_dlc_trigger = yes
+		has_playable_adventurer_dlc_trigger = yes
 		custom_tooltip = {
 			text = landless_government_tt
 			government_has_flag = government_is_landless_adventurer
@@ -2855,7 +2855,7 @@ master_bard_camp_officer = {
 	}
 
 	is_shown = {
-		has_ep3_dlc_trigger = yes
+		has_playable_adventurer_dlc_trigger = yes
 		custom_tooltip = {
 			text = landless_government_tt
 			government_has_flag = government_is_landless_adventurer
@@ -3013,7 +3013,7 @@ stooge_camp_officer = {
 	}
 
 	is_shown = {
-		has_ep3_dlc_trigger = yes
+		has_playable_adventurer_dlc_trigger = yes
 		custom_tooltip = {
 			text = landless_government_tt
 			government_has_flag = government_is_landless_adventurer
@@ -3157,7 +3157,7 @@ master_of_arms_camp_officer = {
 	}
 
 	is_shown = {
-		has_ep3_dlc_trigger = yes
+		has_playable_adventurer_dlc_trigger = yes
 		custom_tooltip = {
 			text = landless_government_tt
 			government_has_flag = government_is_landless_adventurer
@@ -3331,7 +3331,7 @@ light_cavalry_captain_camp_officer = {
 	}
 
 	is_shown = {
-		has_ep3_dlc_trigger = yes
+		has_playable_adventurer_dlc_trigger = yes
 		custom_tooltip = {
 			text = landless_government_tt
 			government_has_flag = government_is_landless_adventurer
@@ -3510,7 +3510,7 @@ camelry_captain_camp_officer = {
 	}
 
 	is_shown = {
-		has_ep3_dlc_trigger = yes
+		has_playable_adventurer_dlc_trigger = yes
 		custom_tooltip = {
 			text = landless_government_tt
 			government_has_flag = government_is_landless_adventurer
@@ -3685,7 +3685,7 @@ elephantry_captain_camp_officer = {
 	}
 
 	is_shown = {
-		has_ep3_dlc_trigger = yes
+		has_playable_adventurer_dlc_trigger = yes
 		custom_tooltip = {
 			text = landless_government_tt
 			government_has_flag = government_is_landless_adventurer
@@ -3865,7 +3865,7 @@ heavy_cavalry_captain_camp_officer = {
 	}
 
 	is_shown = {
-		has_ep3_dlc_trigger = yes
+		has_playable_adventurer_dlc_trigger = yes
 		custom_tooltip = {
 			text = landless_government_tt
 			government_has_flag = government_is_landless_adventurer
@@ -4040,7 +4040,7 @@ horse_archer_captain_camp_officer = {
 	}
 
 	is_shown = {
-		has_ep3_dlc_trigger = yes
+		has_playable_adventurer_dlc_trigger = yes
 		custom_tooltip = {
 			text = landless_government_tt
 			government_has_flag = government_is_landless_adventurer
@@ -4215,7 +4215,7 @@ archer_captain_camp_officer = {
 	}
 
 	is_shown = {
-		has_ep3_dlc_trigger = yes
+		has_playable_adventurer_dlc_trigger = yes
 		custom_tooltip = {
 			text = landless_government_tt
 			government_has_flag = government_is_landless_adventurer
@@ -4390,7 +4390,7 @@ heavy_infantry_captain_camp_officer = {
 	}
 
 	is_shown = {
-		has_ep3_dlc_trigger = yes
+		has_playable_adventurer_dlc_trigger = yes
 		custom_tooltip = {
 			text = landless_government_tt
 			government_has_flag = government_is_landless_adventurer
@@ -4565,7 +4565,7 @@ light_infantry_captain_camp_officer = {
 	}
 
 	is_shown = {
-		has_ep3_dlc_trigger = yes
+		has_playable_adventurer_dlc_trigger = yes
 		custom_tooltip = {
 			text = landless_government_tt
 			government_has_flag = government_is_landless_adventurer
@@ -4740,7 +4740,7 @@ pike_captain_camp_officer = {
 	}
 
 	is_shown = {
-		has_ep3_dlc_trigger = yes
+		has_playable_adventurer_dlc_trigger = yes
 		custom_tooltip = {
 			text = landless_government_tt
 			government_has_flag = government_is_landless_adventurer
@@ -4945,7 +4945,7 @@ master_of_spoils_camp_officer = {
 	}
 
 	is_shown = {
-		has_ep3_dlc_trigger = yes
+		has_playable_adventurer_dlc_trigger = yes
 		custom_tooltip = {
 			text = landless_government_tt
 			government_has_flag = government_is_landless_adventurer
@@ -5090,7 +5090,7 @@ laureate_camp_officer = {
 	}
 
 	is_shown = {
-		has_ep3_dlc_trigger = yes
+		has_playable_adventurer_dlc_trigger = yes
 		custom_tooltip = {
 			text = landless_government_tt
 			government_has_flag = government_is_landless_adventurer
@@ -5259,7 +5259,7 @@ camp_priest_camp_officer = {
 	}
 
 	is_shown = {
-		has_ep3_dlc_trigger = yes
+		has_playable_adventurer_dlc_trigger = yes
 		custom_tooltip = {
 			text = landless_government_tt
 			government_has_flag = government_is_landless_adventurer

@@ -16,14 +16,14 @@ adventurers_gather_inspiration_option_effect_chance = {
 # I used this thrice, might as well pull it out here.
 contract_payment_amount_game_rule_multiplicator = {
 	value = 1
-	if = {
-		limit = { has_game_rule = kan_contract_payment_amount_half }
-		add = -0.5
-	}
-	else_if = {
-		limit = { has_game_rule = kan_contract_payment_amount_double }
-		add = 0.5
-	}
+	#if = {
+	#	limit = { has_game_rule = kan_contract_payment_amount_half }
+	#	add = -0.5
+	#}
+	#else_if = {
+	#	limit = { has_game_rule = kan_contract_payment_amount_double }
+	#	add = 0.5
+	#}
 }
 
 # Provisions loss from courtiers
@@ -95,7 +95,7 @@ war_attacker_total_strength_fifth_value = {
 
 ep3_hire_laamp_mercs_payment_value = {
 	value = scope:war_contribution_value
-	divide = 25		#10
+	divide = 25		#20
 	min = scope:employer.minor_gold_value	#prev scope:employer.medium_gold_value
 	if = {
 		limit = {
@@ -125,11 +125,11 @@ ep3_hire_laamp_mercs_payment_value = {
 	#ADDED - Changes from gamerules
 	multiply = contract_payment_amount_game_rule_multiplicator
 	ceiling = yes
-	if = {
-		limit = { has_game_rule = kan_contract_payment_amount_vanilla }
-		multiply = 2.5
-		floor = yes
-	}
+	#if = {
+	#	limit = { has_game_rule = kan_contract_payment_amount_vanilla }
+	#	multiply = 2.5
+	#	floor = yes
+	#}
 	max = {
 		value = scope:employer.yearly_character_income
 		if = {
@@ -177,21 +177,15 @@ adventurers_make_local_deals_option_value = {
 		add = root.current_travel_plan.current_location.available_loot
 		if = {
 			limit = {
-				root.culture = { has_cultural_era_or_later = culture_era_late_medieval }
+				root.current_travel_plan.current_location.county.culture = { has_cultural_era_or_later = culture_era_late_medieval }
 			}
-			multiply = 0.01
-		}
-		else_if = {
-			limit = {
-				root.culture = { has_cultural_era_or_later = culture_era_high_medieval }
-			}
-			multiply = 0.025
-		}
-		else_if = {
-			limit = {
-				root.culture = { has_cultural_era_or_later = culture_era_early_medieval }
-			 }
 			multiply = 0.05
+		}
+		else_if = {
+			limit = {
+				root.current_travel_plan.current_location.county.culture = { has_cultural_era_or_later = culture_era_high_medieval }
+			}
+			multiply = 0.08
 		}
 		else = { multiply = 0.1 }
 		floor = yes
@@ -202,207 +196,226 @@ adventurers_make_local_deals_option_value = {
 
 
 ### BUILDINGS BS ###
+###### WARNING: DEPRICATED FOR NOW ######
+### NEW VANILLA VALUES RIGHT BELOW ###
+
+#camp_building_upgrade_cost_t1_value = 15
+#camp_building_upgrade_cost_t2_value = 30
+#camp_building_upgrade_cost_t3_value = 45
+#camp_building_upgrade_cost_t4_value = 60
+#camp_building_upgrade_cost_t5_value = 75
+#camp_building_upgrade_cost_t6_value = 90
+#
+## Assorted gold costs for camp buildings.
+#camp_main_02_domicile_building_gold_cost_value = 50
+#camp_main_03_domicile_building_gold_cost_value = 90
+#camp_main_04_domicile_building_gold_cost_value = 130
+
+
+
+### END OF NEW VANILLA VALUES ###
+
 
 
 # Camp additional buildings standard costs.
-camp_building_upgrade_cost_t1_value = { 
-	value = 60 
-	if = {
-		limit = { has_game_rule = kan_camp_building_cost_lower }
-		add = -30
-	}
-	else_if = {
-		limit = { has_game_rule = kan_camp_building_cost_low }
-		add = -15
-	}
-}
-camp_building_upgrade_cost_t2_value = { 
-	value = 120
-	if = {
-		limit = { has_game_rule = kan_camp_building_cost_lower }
-		add = -60
-	}
-	else_if = {
-		limit = { has_game_rule = kan_camp_building_cost_low }
-		add = -30
-	}
-}
-camp_building_upgrade_cost_t3_value = { 
-	value = 180
-	if = {
-		limit = { has_game_rule = kan_camp_building_cost_lower }
-		add = -90
-	}
-	else_if = {
-		limit = { has_game_rule = kan_camp_building_cost_low }
-		add = -45
-	}
-}
-camp_building_upgrade_cost_t4_value = { 
-	value = 240
-	if = {
-		limit = { has_game_rule = kan_camp_building_cost_lower }
-		add = -120
-	}
-	else_if = {
-		limit = { has_game_rule = kan_camp_building_cost_low }
-		add = -60
-	}
-}
-camp_building_upgrade_cost_t5_value = { 
-	value = 300
-	if = {
-		limit = { has_game_rule = kan_camp_building_cost_lower }
-		add = -150
-	}
-	else_if = {
-		limit = { has_game_rule = kan_camp_building_cost_low }
-		add = -75
-	}
-}
-camp_building_upgrade_cost_t6_value = { 
-	value = 360
-	if = {
-		limit = { has_game_rule = kan_camp_building_cost_lower }
-		add = -180
-	}
-	else_if = {
-		limit = { has_game_rule = kan_camp_building_cost_low }
-		add = -90
-	}
-}
-
-# Assorted gold costs for camp buildings.
-camp_main_02_domicile_building_gold_cost_value = { 
-	value = 200
-	if = {
-		limit = { has_game_rule = kan_camp_building_cost_lower }
-		add = -100
-	}
-	else_if = {
-		limit = { has_game_rule = kan_camp_building_cost_low }
-		add = -50
-	}
-}
-camp_main_03_domicile_building_gold_cost_value = { 
-	value = 350
-	if = {
-		limit = { has_game_rule = kan_camp_building_cost_lower }
-		add = -175
-	}
-	else_if = {
-		limit = { has_game_rule = kan_camp_building_cost_low }
-		add = -90
-	}
-}
-camp_main_04_domicile_building_gold_cost_value = { 
-	value = 500
-	if = {
-		limit = { has_game_rule = kan_camp_building_cost_lower }
-		add = -250
-	}
-	else_if = {
-		limit = { has_game_rule = kan_camp_building_cost_low }
-		add = -125
-	}
-}
-supply_tent_01_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t1_value }
-supply_tent_02_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t2_value }
-supply_tent_03_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t3_value }
-supply_tent_04_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t4_value }
-supply_tent_05_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t5_value }
-supply_tent_06_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t6_value }
-supply_tent_sutler_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t1_value }
-supply_tent_mender_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t2_value }
-supply_tent_smithy_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t3_value }
-supply_tent_arsenal_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t4_value }
-supply_tent_reserve_provisions_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t1_value }
-supply_tent_reserve_water_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t1_value }
-supply_tent_climbing_gear_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t2_value }
-supply_tent_subdued_gear_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t2_value }
-barber_tent_01_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t1_value }
-barber_tent_02_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t2_value }
-barber_tent_03_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t3_value }
-barber_tent_04_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t4_value }
-barber_tent_05_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t5_value }
-barber_tent_06_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t6_value }
-barber_tent_surgeons_tools_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t4_value }
-barber_tent_dentists_tools_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t1_value }
-barber_tent_torturers_tools_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t2_value }
-barber_tent_reference_corpus_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t3_value }
-barber_tent_morticians_tools_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t1_value }
-baggage_train_01_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t1_value }
-baggage_train_02_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t2_value }
-baggage_train_03_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t3_value }
-baggage_train_04_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t4_value }
-baggage_train_05_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t5_value }
-baggage_train_06_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t6_value }
-baggage_train_ample_steeds_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t2_value }
-baggage_train_porters_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t3_value }
-baggage_train_trackers_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t2_value }
-baggage_train_kennel_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t2_value }
-baggage_train_siege_engineers_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t4_value }
-baggage_train_shrine_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t1_value }
-baggage_train_scribes_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t4_value }
-baggage_train_bartering_grounds_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t4_value }
-baggage_train_proof_of_claims_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t2_value }
-baggage_train_ransom_cages_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t4_value }
-baggage_train_negotiators_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t1_value }
-baggage_train_ascetics_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t2_value }
-baggage_train_pleasure_tents_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t3_value }
-mess_tent_01_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t1_value }
-mess_tent_02_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t2_value }
-mess_tent_03_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t3_value }
-mess_tent_04_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t4_value }
-mess_tent_05_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t5_value }
-mess_tent_06_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t6_value }
-mess_tent_herbalists_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t4_value }
-mess_tent_brewers_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t2_value }
-mess_tent_curers_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t2_value }
-mess_tent_bakers_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t2_value }
-mess_tent_cooks_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t2_value }
-camp_fire_01_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t1_value }
-camp_fire_02_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t2_value }
-camp_fire_03_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t3_value }
-camp_fire_04_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t4_value }
-camp_fire_05_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t5_value }
-camp_fire_06_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t6_value }
-camp_fire_trailing_musicians_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t2_value }
-camp_fire_wandering_poets_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t2_value }
-camp_fire_capering_fools_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t1_value }
-camp_fire_libations_for_the_lost_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t1_value }
-camp_fire_local_hangers_on_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t1_value }
-camp_fire_future_dreams_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t3_value }
-camp_fire_nightly_debates_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t2_value }
-camp_fire_juicy_rumors_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t4_value }
-proving_grounds_01_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t1_value }
-proving_grounds_02_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t2_value }
-proving_grounds_03_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t3_value }
-proving_grounds_04_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t4_value }
-proving_grounds_05_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t5_value }
-proving_grounds_06_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t6_value }
-proving_grounds_horse_run_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t3_value }
-proving_grounds_camel_run_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t3_value }
-proving_grounds_elephantry_reserve_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t4_value }
-proving_grounds_nightly_barding_drills_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t4_value }
-proving_grounds_life_in_the_saddle_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t4_value }
-proving_grounds_the_stump_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t2_value }
-proving_grounds_personal_bouts_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t3_value }
-proving_grounds_training_circle_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t2_value }
-proving_grounds_mock_battle_drills_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t3_value }
-proving_grounds_lockwagon_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t4_value }
-proving_grounds_martial_study_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t4_value }
-proving_grounds_the_stick_game_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t2_value }
-proving_grounds_bodyguard_drills_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t3_value }
-camp_perimeter_01_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t1_value }
-camp_perimeter_02_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t2_value }
-camp_perimeter_03_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t3_value }
-camp_perimeter_04_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t4_value }
-camp_perimeter_05_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t5_value }
-camp_perimeter_06_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t6_value }
-camp_perimeter_good_siting_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t1_value }
-camp_perimeter_fixed_layout_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t2_value }
-camp_perimeter_extra_watch_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t1_value }
-camp_perimeter_palisade_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t1_value }
-camp_perimeter_ditch_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t3_value }
-camp_perimeter_camp_hygiene_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t1_value }
+#camp_building_upgrade_cost_t1_value = { 
+#	value = 60 
+#	if = {
+#		limit = { has_game_rule = kan_camp_building_cost_lower }
+#		add = -30
+#	}
+#	else_if = {
+#		limit = { has_game_rule = kan_camp_building_cost_low }
+#		add = -15
+#	}
+#}
+#camp_building_upgrade_cost_t2_value = { 
+#	value = 120
+#	if = {
+#		limit = { has_game_rule = kan_camp_building_cost_lower }
+#		add = -60
+#	}
+#	else_if = {
+#		limit = { has_game_rule = kan_camp_building_cost_low }
+#		add = -30
+#	}
+#}
+#camp_building_upgrade_cost_t3_value = { 
+#	value = 180
+#	if = {
+#		limit = { has_game_rule = kan_camp_building_cost_lower }
+#		add = -90
+#	}
+#	else_if = {
+#		limit = { has_game_rule = kan_camp_building_cost_low }
+#		add = -45
+#	}
+#}
+#camp_building_upgrade_cost_t4_value = { 
+#	value = 240
+#	if = {
+#		limit = { has_game_rule = kan_camp_building_cost_lower }
+#		add = -120
+#	}
+#	else_if = {
+#		limit = { has_game_rule = kan_camp_building_cost_low }
+#		add = -60
+#	}
+#}
+#camp_building_upgrade_cost_t5_value = { 
+#	value = 300
+#	if = {
+#		limit = { has_game_rule = kan_camp_building_cost_lower }
+#		add = -150
+#	}
+#	else_if = {
+#		limit = { has_game_rule = kan_camp_building_cost_low }
+#		add = -75
+#	}
+#}
+#camp_building_upgrade_cost_t6_value = { 
+#	value = 360
+#	if = {
+#		limit = { has_game_rule = kan_camp_building_cost_lower }
+#		add = -180
+#	}
+#	else_if = {
+#		limit = { has_game_rule = kan_camp_building_cost_low }
+#		add = -90
+#	}
+#}
+#
+## Assorted gold costs for camp buildings.
+#camp_main_02_domicile_building_gold_cost_value = { 
+#	value = 200
+#	if = {
+#		limit = { has_game_rule = kan_camp_building_cost_lower }
+#		add = -100
+#	}
+#	else_if = {
+#		limit = { has_game_rule = kan_camp_building_cost_low }
+#		add = -50
+#	}
+#}
+#camp_main_03_domicile_building_gold_cost_value = { 
+#	value = 350
+#	if = {
+#		limit = { has_game_rule = kan_camp_building_cost_lower }
+#		add = -175
+#	}
+#	else_if = {
+#		limit = { has_game_rule = kan_camp_building_cost_low }
+#		add = -90
+#	}
+#}
+#camp_main_04_domicile_building_gold_cost_value = { 
+#	value = 500
+#	if = {
+#		limit = { has_game_rule = kan_camp_building_cost_lower }
+#		add = -250
+#	}
+#	else_if = {
+#		limit = { has_game_rule = kan_camp_building_cost_low }
+#		add = -125
+#	}
+#}
+#supply_tent_01_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t1_value }
+#supply_tent_02_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t2_value }
+#supply_tent_03_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t3_value }
+#supply_tent_04_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t4_value }
+#supply_tent_05_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t5_value }
+#supply_tent_06_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t6_value }
+#supply_tent_sutler_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t1_value }
+#supply_tent_mender_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t2_value }
+#supply_tent_smithy_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t3_value }
+#supply_tent_arsenal_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t4_value }
+#supply_tent_reserve_provisions_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t1_value }
+#supply_tent_reserve_water_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t1_value }
+#supply_tent_climbing_gear_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t2_value }
+#supply_tent_subdued_gear_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t2_value }
+#barber_tent_01_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t1_value }
+#barber_tent_02_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t2_value }
+#barber_tent_03_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t3_value }
+#barber_tent_04_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t4_value }
+#barber_tent_05_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t5_value }
+#barber_tent_06_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t6_value }
+#barber_tent_surgeons_tools_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t4_value }
+#barber_tent_dentists_tools_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t1_value }
+#barber_tent_torturers_tools_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t2_value }
+#barber_tent_reference_corpus_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t3_value }
+#barber_tent_morticians_tools_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t1_value }
+#baggage_train_01_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t1_value }
+#baggage_train_02_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t2_value }
+#baggage_train_03_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t3_value }
+#baggage_train_04_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t4_value }
+#baggage_train_05_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t5_value }
+#baggage_train_06_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t6_value }
+#baggage_train_ample_steeds_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t2_value }
+#baggage_train_porters_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t3_value }
+#baggage_train_trackers_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t2_value }
+#baggage_train_kennel_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t2_value }
+#baggage_train_siege_engineers_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t4_value }
+#baggage_train_shrine_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t1_value }
+#baggage_train_scribes_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t4_value }
+#baggage_train_bartering_grounds_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t4_value }
+#baggage_train_proof_of_claims_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t2_value }
+#baggage_train_ransom_cages_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t4_value }
+#baggage_train_negotiators_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t1_value }
+#baggage_train_ascetics_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t2_value }
+#baggage_train_pleasure_tents_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t3_value }
+#mess_tent_01_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t1_value }
+#mess_tent_02_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t2_value }
+#mess_tent_03_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t3_value }
+#mess_tent_04_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t4_value }
+#mess_tent_05_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t5_value }
+#mess_tent_06_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t6_value }
+#mess_tent_herbalists_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t4_value }
+#mess_tent_brewers_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t2_value }
+#mess_tent_curers_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t2_value }
+#mess_tent_bakers_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t2_value }
+#mess_tent_cooks_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t2_value }
+#camp_fire_01_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t1_value }
+#camp_fire_02_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t2_value }
+#camp_fire_03_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t3_value }
+#camp_fire_04_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t4_value }
+#camp_fire_05_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t5_value }
+#camp_fire_06_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t6_value }
+#camp_fire_trailing_musicians_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t2_value }
+#camp_fire_wandering_poets_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t2_value }
+#camp_fire_capering_fools_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t1_value }
+#camp_fire_libations_for_the_lost_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t1_value }
+#camp_fire_local_hangers_on_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t1_value }
+#camp_fire_future_dreams_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t3_value }
+#camp_fire_nightly_debates_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t2_value }
+#camp_fire_juicy_rumors_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t4_value }
+#proving_grounds_01_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t1_value }
+#proving_grounds_02_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t2_value }
+#proving_grounds_03_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t3_value }
+#proving_grounds_04_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t4_value }
+#proving_grounds_05_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t5_value }
+#proving_grounds_06_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t6_value }
+#proving_grounds_horse_run_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t3_value }
+#proving_grounds_camel_run_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t3_value }
+#proving_grounds_elephantry_reserve_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t4_value }
+#proving_grounds_nightly_barding_drills_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t4_value }
+#proving_grounds_life_in_the_saddle_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t4_value }
+#proving_grounds_the_stump_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t2_value }
+#proving_grounds_personal_bouts_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t3_value }
+#proving_grounds_training_circle_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t2_value }
+#proving_grounds_mock_battle_drills_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t3_value }
+#proving_grounds_lockwagon_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t4_value }
+#proving_grounds_martial_study_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t4_value }
+#proving_grounds_the_stick_game_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t2_value }
+#proving_grounds_bodyguard_drills_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t3_value }
+#camp_perimeter_01_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t1_value }
+#camp_perimeter_02_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t2_value }
+#camp_perimeter_03_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t3_value }
+#camp_perimeter_04_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t4_value }
+#camp_perimeter_05_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t5_value }
+#camp_perimeter_06_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t6_value }
+#camp_perimeter_good_siting_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t1_value }
+#camp_perimeter_fixed_layout_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t2_value }
+#camp_perimeter_extra_watch_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t1_value }
+#camp_perimeter_palisade_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t1_value }
+#camp_perimeter_ditch_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t3_value }
+#camp_perimeter_camp_hygiene_domicile_building_gold_cost_value = { value = camp_building_upgrade_cost_t1_value }

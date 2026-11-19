@@ -112,7 +112,7 @@
 					}
 					ordered_in_list = {
 						variable = war_supported_counties_list
-						order_by = development_level
+						order_by = province_size	#prev prosperity_level
 						save_scope_as = new_capital
 					}
 					create_character = {
@@ -194,10 +194,11 @@
 	}
 
 	on_victory = {
+		on_victory_faction_war_effect = yes
 		scope:attacker = {
 			ordered_in_list = {
 				variable = war_supported_counties_list
-				order_by = development_level
+				order_by = province_size		#prev development_level
 				save_scope_as = new_capital
 			}
 			primary_title = {
@@ -361,8 +362,6 @@
 			}
 		}
 		scope:defender = {
-			# Legitimacy effect
-			faction_war_end_defeat_legitimacy_effect = yes
 			# Struggle Catalysts
 			hidden_effect = {
 				if = {
@@ -415,9 +414,6 @@
 			clear_variable_list = war_met_peasant_leaders_list
 			remove_variable = ep3_laamp_peasant_war_remain_laamp
 		}
-
-		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
-		laamp_as_mercenary_payout_tooltip_effect = yes
 	}
 
 	on_white_peace_desc = {
@@ -431,8 +427,8 @@
 	}
 
 	on_white_peace = {
+		on_white_peace_faction_war_effect = yes
 		scope:attacker = {
-			show_pow_release_message_effect = yes
 			#boost the county control up and remove the county corruption modifiers
 			every_in_list = {
 				variable = war_supported_counties_list
@@ -446,20 +442,7 @@
 			clear_variable_list = war_supported_counties_list
 			clear_variable_list = war_met_peasant_leaders_list
 			remove_variable = ep3_laamp_peasant_war_remain_laamp
-			stress_and_fulfillment_impact = {
-				ambitious = medium_stress_impact_gain
-				arrogant = medium_stress_impact_gain
-			}
 		}
-
-		scope:defender = {
-			stress_and_fulfillment_impact = {
-				arrogant = medium_stress_impact_gain
-			}
-		}
-
-		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
-		laamp_as_mercenary_payout_tooltip_effect = yes
 	}
 
 	on_defeat_desc = {
@@ -473,8 +456,9 @@
 	}
 
 	on_defeat = {
+		on_defeat_faction_war_effect = yes
+
 		scope:attacker = {
-			show_pow_release_message_effect = yes
 			#boost the county control up and remove the county corruption modifiers
 			every_in_list = {
 				variable = war_supported_counties_list
@@ -512,11 +496,7 @@
 					type = dungeon
 				}
 			}
-			mandala_peacemaker_perk_serenity_effect = yes
 		}
-
-		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
-		laamp_as_mercenary_payout_tooltip_effect = yes
 	}
 
 	on_invalidated_desc = msg_invalidate_war_title

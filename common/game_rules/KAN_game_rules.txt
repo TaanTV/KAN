@@ -11,16 +11,16 @@
 	kan_camp_building_restrictions_no_restrictions = { flag = GG_can_change_rule }
 }
 
-kan_camp_building_cost = {
-	
-	categories = {
-		difficulty tweaks
-	}
-	
-	kan_camp_building_cost_vanilla = { flag = GG_can_change_rule }
-	kan_camp_building_cost_low = { flag = GG_can_change_rule }
-	kan_camp_building_cost_lower = { flag = GG_can_change_rule }
-}
+#kan_camp_building_cost = {
+#	
+#	categories = {
+#		difficulty tweaks
+#	}
+#	
+#	kan_camp_building_cost_vanilla = { flag = GG_can_change_rule }
+#	kan_camp_building_cost_low = { flag = GG_can_change_rule }
+#	kan_camp_building_cost_lower = { flag = GG_can_change_rule }
+#}
 
 kan_contract_payment = {
 	
@@ -34,19 +34,19 @@ kan_contract_payment = {
 	kan_contract_payment_thin_air = { flag = GG_can_change_rule }
 }
 
-kan_contract_payment_amount = {
-	
-	categories = {
-		difficulty tweaks
-	}
-	
-	default = kan_contract_payment_amount_default
-	#dlc = "The Northern Lords"
-	kan_contract_payment_amount_half = { flag = GG_can_change_rule }
-	kan_contract_payment_amount_default = { flag = GG_can_change_rule }
-	kan_contract_payment_amount_double = { flag = GG_can_change_rule }	# actually x1.5 not x2
-	kan_contract_payment_amount_vanilla = { flag = GG_can_change_rule }
-}
+#kan_contract_payment_amount = {
+#	
+#	categories = {
+#		difficulty tweaks
+#	}
+#	
+#	default = kan_contract_payment_amount_default
+#	#dlc = "The Northern Lords"
+#	kan_contract_payment_amount_half = { flag = GG_can_change_rule }
+#	kan_contract_payment_amount_default = { flag = GG_can_change_rule }
+#	kan_contract_payment_amount_double = { flag = GG_can_change_rule }	# actually x1.5 not x2
+#	kan_contract_payment_amount_vanilla = { flag = GG_can_change_rule }
+#}
 
 kan_contract_payment_provisions_amount = {
 	

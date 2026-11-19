@@ -37,7 +37,7 @@ KAN_laamp_courtier_provisions_pulse_pulse = {
 	
 
 KAN_laamp_courtier_provisions_pulse = {
-	trigger = { has_game_rule = kan_laamp_courtier_provision_maintaince_enabled }
+	trigger = { NOT = {  has_game_rule = kan_laamp_courtier_provision_maintaince_disabled } }
 	effect = {
 		every_player = {
 			limit = { is_landless_adventurer = yes }

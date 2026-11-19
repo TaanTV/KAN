@@ -51,6 +51,10 @@
 				every_known_secret = {
 					limit = {
 						secret_owner = scope:recipient
+						NOR = {
+							secret_target ?= scope:puppet_or_actor
+							any_secret_participant = { this = scope:puppet_or_actor }
+						}
 					}
 					expose_secret = scope:puppet_or_actor
 				}
@@ -121,7 +125,7 @@
 		}
 
 		# If we're a clan this interaction affects unity
-		add_clan_unity_interaction_effect = {
+		add_house_unity_interaction_effect = {
 			CHARACTER = scope:puppet_or_actor
 			TARGET = scope:recipient
 			VALUE = major_unity_loss
@@ -251,6 +255,22 @@
 		# Unity modifiers
 		evaluate_action_decreasing_house_unity = {
 			VALUE = 100
+		}
+
+		modifier = {
+			NOT = { exists = scope:target }
+			scope:recipient = {
+				NOT = {
+					any_secret = {
+						is_known_by = scope:puppet_or_actor
+						NOR = {
+							secret_target ?= scope:puppet_or_actor
+							any_secret_participant = { this = scope:puppet_or_actor }
+						}
+					}
+				}
+			}
+			factor = 0
 		}
 	}
 }
