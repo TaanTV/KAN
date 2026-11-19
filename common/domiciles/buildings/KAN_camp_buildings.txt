@@ -5403,12 +5403,12 @@ proving_grounds_lockwagon = { # Lockwagon
 			floor = yes
 		}
 	}
+
 	can_construct = {
 		trigger_if = {
-			limit = {
-				NOT = { is_ai = yes }	# ИИ строит вне зависимости от типа лагеря
+			limit = { 
 				OR = {
-					has_game_rule = kan_camp_building_restrictions_default
+					has_game_rule = kan_camp_building_restrictions_default 
 					AND = {
 						has_game_rule = kan_camp_building_restrictions_wanderers_exemption
 						NOT = { has_realm_law = camp_purpose_wanderers }

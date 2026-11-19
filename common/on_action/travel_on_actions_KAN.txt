@@ -643,7 +643,7 @@ adventurer_talent_scouting_on_action = {
 				limit = {
 					#is_ai = yes
 				}
-				add = 10 # change 40	#prev 90
+				add = 40	#prev 90
 			}
 			else = {
 				add = 50
