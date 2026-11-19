@@ -5403,12 +5403,12 @@ proving_grounds_lockwagon = { # Lockwagon
 			floor = yes
 		}
 	}
-
 	can_construct = {
 		trigger_if = {
-			limit = { 
+			limit = {
+				NOT = { is_ai = yes } # so that the adventurer would have +1 to unit size and the opportunity to earn some extra income.
 				OR = {
-					has_game_rule = kan_camp_building_restrictions_default 
+					has_game_rule = kan_camp_building_restrictions_default
 					AND = {
 						has_game_rule = kan_camp_building_restrictions_wanderers_exemption
 						NOT = { has_realm_law = camp_purpose_wanderers }
